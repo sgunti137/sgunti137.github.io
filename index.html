@@ -42,9 +42,7 @@
         <p class="pill"><span class="dot"></span>Open to SDE opportunities · starting May 2027</p>
         <h1>Saaketh Gunti</h1>
         <p class="role">Software Engineer · ex-Microsoft · MS CS @ Georgia Tech</p>
-        <p class="lede">At Microsoft, I spent three years designing and building Log Intelligence from a blank design doc to production. It covers onboarding, data pipelines, automated model training and alerting, and it watches the logs of services run by 70+ internal teams to catch outages early. I built every stage and supported it in production.</p>
-        <p class="lede">I'm now doing an MS in Computer Science at Georgia Tech, working on distributed LLM systems and large-scale data pipelines. Before that, I did competitive programming (ICPC, Codeforces 1881) and research at IIT Guwahati on rebuilding neural networks exactly with SMT solvers. Whether it's systems, data or algorithms, I do my best work on problems that don't have an obvious answer yet.</p>
-        <p class="lede">I also work well with AI. I use coding agents like Claude Code every day to explore unfamiliar codebases, prototype quickly and automate repetitive work, and I've built LLM pipelines that run in front of real users. I treat them as a fast collaborator: I own the design, review every change and test what ships.</p>
+        <p class="lede">I spent three years at Microsoft building Log Intelligence end to end, a service that catches outages early for 70+ internal teams. Now I'm doing an MS at Georgia Tech, working on distributed LLM systems. I like hard problems, and I use AI coding agents daily while owning the design and every change that ships.</p>
         <div class="cta">
           <a class="btn primary" href="#work">See my work</a>
           <a class="btn" href="mailto:saaketh.gunti2002@gmail.com">Get in touch</a>
@@ -80,29 +78,29 @@
       <header class="sec-head">
         <p class="num">01</p>
         <h2>Selected work</h2>
-        <p class="sec-sub">Production systems and the research projects I'm proudest of.</p>
+        
       </header>
 
       <article class="panel feature">
         <div class="feature-text">
           <p class="kicker">Microsoft · 2023–2026 · Production</p>
           <h3>Log Intelligence</h3>
-          <p>An internal Microsoft service that learns the normal behavior of Microsoft services from their logs and flags unusual patterns early, before they cause an outage. I owned it end to end, from requirements and architecture through production support.</p>
+          <p>An internal Microsoft service that spots unusual patterns in service logs before they cause an outage. I owned it from design to production.</p>
           <div class="pcr">
-            <div><h4>Problem</h4><p>Services produce huge volumes of logs, and the early signs of a failure usually show up there before anything breaks. No one can watch those logs by hand at scale, so problems were often found only after a service had already gone down.</p></div>
-            <div><h4>Result</h4><p>Outages detected 75% faster across 70+ teams, new teams onboarded in one day, and 30% less developer effort. Published in the Microsoft Journal of Applied Research: <a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></p></div>
+            <div><h4>Problem</h4><p>Early signs of failure hide in huge volumes of logs, so outages were often caught too late.</p></div>
+            <div><h4>Result</h4><p>75% faster outage detection across 70+ teams, one-day onboarding, 30% less developer effort. Published in the Microsoft Journal of Applied Research: <a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></p></div>
           </div>
           <p class="tags"><span>C#</span><span>Python</span><span>React</span><span>Azure ML</span><span>Logic Apps</span><span>KQL</span></p>
         </div>
         <figure class="flow" aria-label="Log Intelligence architecture, all four stages built by me">
           <figcaption>I designed and built all four stages</figcaption>
-          <div class="node accent"><i>1</i>Onboarding &amp; log collection<span>Collects a new team's details and automatically sets up fetching their logs</span><small>C#</small></div>
+          <div class="node accent"><i>1</i>Onboarding &amp; log collection<span>Collects team details, sets up log fetching automatically</span><small>C#</small></div>
           <div class="edge"></div>
-          <div class="node accent"><i>2</i>Ingestion &amp; normalization<span>Pipelines that standardize logs from many service endpoints</span><small>Azure, Python</small></div>
+          <div class="node accent"><i>2</i>Ingestion &amp; normalization<span>Standardizes logs from many services</span><small>Azure, Python</small></div>
           <div class="edge"></div>
-          <div class="node accent"><i>3</i>Automated model training<span>Per-customer training, evaluation and deployment</span><small>Azure ML Pipelines</small></div>
+          <div class="node accent"><i>3</i>Automated model training<span>Trains and deploys a model per team</span><small>Azure ML Pipelines</small></div>
           <div class="edge"></div>
-          <div class="node accent"><i>4</i>Anomaly detection → tickets<span>Diagnosis results filed to tickets, no engineer in the loop</span><small>Logic Apps</small></div>
+          <div class="node accent"><i>4</i>Anomaly detection → tickets<span>Files findings as tickets, no engineer needed</span><small>Logic Apps</small></div>
         </figure>
       </article>
 
@@ -110,44 +108,44 @@
         <article class="panel card">
           <p class="kicker">CS 6220 · Georgia Tech <span class="badge">in progress</span></p>
           <h3>FocalGuard</h3>
-          <p class="summary">Detects when an AI chatbot is confidently wrong, without paying to run many models on every question.</p>
+          <p class="summary">Detects when an AI chatbot is confidently wrong, at low cost.</p>
           <dl class="pai">
-            <dt>Problem</dt><dd>Common checks ask the same model several times, but a model tends to repeat its own mistakes, so agreement proves little. Running many different models on every query is too slow and costly.</dd>
-            <dt>Approach</dt><dd>Choose a small set of models whose mistakes rarely overlap, and add a router that calls them only when the first answer looks unreliable. Each answer comes back with a trust score: accept, flag or abstain.</dd>
-            <dt>Impact</dt><dd>Planned scale: ~1.8M answers from 6 open models over ~50K questions, generated on a distributed Ray + vLLM pipeline.</dd>
+            <dt>Problem</dt><dd>Asking one model twice doesn't catch its repeated mistakes; asking many is expensive.</dd>
+            <dt>Approach</dt><dd>A few models with non-overlapping mistakes, called only when the first answer looks shaky.</dd>
+            <dt>Impact</dt><dd>~1.8M answers from 6 models on Ray + vLLM (planned).</dd>
           </dl>
           <p class="tags"><span>Python</span><span>Ray</span><span>vLLM</span><span>PyTorch</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">Graduate Research Assistant · Georgia Tech</p>
           <h3>AI Tutor Insights</h3>
-          <p class="summary">Turns students’ conversations with our team’s AI tutor into insights professors can act on.</p>
+          <p class="summary">Turns students’ chats with our team’s AI tutor into insights professors can act on.</p>
           <dl class="pai">
-            <dt>Problem</dt><dd>Our team built an AI tutor that Georgia Tech students use for their coursework. These chats reveal where students get stuck, but no professor has time to read them all.</dd>
-            <dt>Approach</dt><dd>A 7-step LLM pipeline grades and summarizes each student’s conversations, groups similar mistakes across the class, and writes up what it finds as a web report.</dd>
-            <dt>Impact</dt><dd>For each homework, professors see the top struggles, the concepts and problems students found hardest, and the common mistakes behind them, so they can adjust lectures and support where it matters most.</dd>
+            <dt>Problem</dt><dd>Chats reveal where students get stuck, but no professor has time to read them all.</dd>
+            <dt>Approach</dt><dd>A 7-step LLM pipeline that grades, summarizes and clusters common mistakes.</dd>
+            <dt>Impact</dt><dd>A report per homework showing top struggles, so professors know what to re-teach.</dd>
           </dl>
           <p class="tags"><span>Python</span><span>OpenAI API</span><span>Web</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">CSE 6242 · Georgia Tech</p>
           <h3>CareerAtlas</h3>
-          <p class="summary">Helps job seekers compare cities and roles by what a salary is actually worth after local prices and taxes.</p>
+          <p class="summary">Compares cities and roles by what a salary is really worth after prices and taxes.</p>
           <dl class="pai">
-            <dt>Problem</dt><dd>Salary data is huge and messy, and a raw number hides cost of living and taxes. When no option meets all of someone’s requirements, most tools simply show nothing.</dd>
-            <dt>Approach</dt><dd>An 8-stage pipeline cleans 1.4 GB of public H-1B wage filings, maps them to cities and adjusts for prices. A search engine then suggests which requirement to loosen and explains why.</dd>
-            <dt>Impact</dt><dd>A custom index answers searches about 135× faster than brute force and runs entirely in the browser. The take-home pay calculator is tested against official tax tables.</dd>
+            <dt>Problem</dt><dd>Raw salaries hide cost of living, and most tools show nothing when no option fits.</dd>
+            <dt>Approach</dt><dd>An 8-stage pipeline over 1.4 GB of H-1B wage data, plus a search that suggests what to relax.</dd>
+            <dt>Impact</dt><dd>~135× faster search than brute force, running fully in the browser.</dd>
           </dl>
           <p class="tags"><span>Python</span><span>Parquet</span><span>JavaScript</span><span>D3</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">Research · IIT Guwahati</p>
           <h3>Fidelity Extraction of Neural Networks</h3>
-          <p class="summary">Fidelity extraction: copying a deployed neural network so it behaves identically to the original, just by querying it.</p>
+          <p class="summary">Copies a deployed neural network exactly, just by querying it.</p>
           <dl class="pai">
-            <dt>Problem</dt><dd>Companies treat trained models as valuable property and keep the weights private, exposing only the ability to send an input and read the output.</dd>
-            <dt>Approach</dt><dd>Recover the network one layer at a time with an SMT solver, using only input-output queries and no training data. A tool generates the attack code from the network’s structure.</dd>
-            <dt>Impact</dt><dd>Achieved exact, functionally identical extraction of medium-sized neural networks.</dd>
+            <dt>Problem</dt><dd>Model weights are kept private; only inputs and outputs are exposed.</dd>
+            <dt>Approach</dt><dd>Recover the network layer by layer with an SMT solver, with no training data.</dd>
+            <dt>Impact</dt><dd>Exact extraction of medium-sized neural networks.</dd>
           </dl>
           <p class="tags"><span>Python</span><span>Z3 / SMT</span><span>ML security</span></p>
         </article>
@@ -181,7 +179,7 @@
         <li class="panel">
           <span class="when">2023 – 2026</span>
           <div><h3>Software Engineer</h3><p class="org">Microsoft</p></div>
-          <p>Led Log Intelligence end to end. Ingestion pipelines, automated ML training, fault-diagnosis automation, security reviews with Microsoft security engineering.</p>
+          <p>Led Log Intelligence end to end, from design to production support.</p>
         </li>
         <li class="panel">
           <span class="when">2022 – 2023</span>
@@ -191,7 +189,7 @@
         <li class="panel">
           <span class="when">Summer 2022</span>
           <div><h3>SDE Intern</h3><p class="org">Microsoft</p></div>
-          <p>Built a blob-storage cost framework (automated tiering, moves, lifecycle) and migrated archival from Databricks to Synapse.</p>
+          <p>Automated blob-storage cost management; migrated archival to Synapse.</p>
         </li>
       </ol>
     </section>
@@ -208,7 +206,7 @@
           <div class="edu-row"><b>Georgia Institute of Technology</b><span>MS, Computer Science · GPA 4.0/4.0</span></div>
           <div class="edu-row"><b>IIT Guwahati</b><span>B.Tech, CSE · CPI 8.81/10 · 2019–2023</span></div>
           <h4 class="mt">Teaching &amp; community</h4>
-          <p>TA for Machine Learning and Computer Networks. Ran data-structures and algorithms bootcamps as ICPC executive.</p>
+          <p>TA for Machine Learning and Computer Networks; ran algorithms bootcamps.</p>
         </div>
         <div class="awards">
           <div class="panel award"><b>#3</b><span>Microsoft Global Hackathon 2023, #1 in India</span></div>
