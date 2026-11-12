@@ -4,16 +4,32 @@ document.getElementById('theme').addEventListener('click', () => {
   try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
 });
 
-// Highlight the nav link for the section in view
+// Highlight the nav link for the section sitting just under the nav bar
 const links = [...document.querySelectorAll('.nav nav a')];
-const navObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-    }
-  });
-}, { rootMargin: '-40% 0px -55% 0px' });
-document.querySelectorAll('main section[id]').forEach(s => navObserver.observe(s));
+const setActive = id => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+let clickedId = null;
+const updateActive = () => {
+  if (clickedId) return;
+  const line = document.querySelector('.nav').offsetHeight + 24;
+  const sections = links.filter(a => getComputedStyle(a).display !== 'none')
+    .map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  let current = null;
+  sections.forEach(s => { if (s.getBoundingClientRect().top <= line) current = s.id; });
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1].id;
+  setActive(current);
+};
+addEventListener('scroll', updateActive, { passive: true });
+addEventListener('resize', updateActive);
+updateActive();
+// A clicked link stays highlighted until the jump finishes, even if the target can't reach the top
+links.forEach(a => a.addEventListener('click', () => {
+  clickedId = a.getAttribute('href').slice(1);
+  setActive(clickedId);
+  clearTimeout(a._t);
+  let last = -1;
+  const settle = () => { if (scrollY === last) { setTimeout(() => { clickedId = null; }, 150); return; } last = scrollY; a._t = setTimeout(settle, 120); };
+  a._t = setTimeout(settle, 120);
+}));
 
 // Fade panels in as they scroll into view
 const revealObserver = new IntersectionObserver(entries => {
