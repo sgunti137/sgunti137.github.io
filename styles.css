@@ -45,7 +45,7 @@ body {
   margin: 0; background: var(--bg); color: var(--text);
   font: 16px/1.65 Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 .glow {
   position: fixed; inset: -20vh -10vw auto; height: 90vh; z-index: -1; pointer-events: none;
@@ -307,7 +307,7 @@ section { padding: 56px 0; }
 }
 
 .glow { inset: 0 0 auto 0; }
-html { overflow-x: hidden; }
+html { overflow-x: clip; }
 
 #contact { padding-top: 24px; }
 @media (max-width: 720px) {
