@@ -45,3 +45,16 @@ const countObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.6 });
 counters.forEach(c => countObserver.observe(c));
+
+// Mobile menu
+const nav = document.querySelector('.nav');
+const menuBtn = document.getElementById('menu-btn');
+const setMenu = open => {
+  nav.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+};
+menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+links.forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+document.addEventListener('click', e => { if (!nav.contains(e.target)) setMenu(false); });
