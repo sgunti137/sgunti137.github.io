@@ -87,11 +87,11 @@
           <h3>Log Intelligence</h3>
           <p>An internal Microsoft service that spots unusual patterns in service logs before they cause an outage. I owned it from design to production.</p>
           <ul class="points">
-            <li>Built self-serve onboarding and automatic log collection in <b>C#</b>, so teams onboard in one day.</li>
-            <li>Standardized logs from many services with <b>Python</b> on <b>Azure</b>, queried with <b>KQL</b>.</li>
-            <li>Automated per-team model training and deployment with <b>Azure ML Pipelines</b>.</li>
-            <li>Filed anomalies as tickets via <b>Logic Apps</b>: 75% faster outage detection across 70+ teams, 30% less developer effort.</li>
-            <li>Published in the Microsoft Journal of Applied Research: <a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></li>
+            <li>Led architecture through production; cut onboarding from 5 days to 1 with a <b>C#</b> onboarding flow, now used by 70+ teams.</li>
+            <li>Built ingestion pipelines with <b>Python</b> on <b>Azure</b> that standardize logs from many services into ML-ready data.</li>
+            <li>Trained <b>autoencoders</b> on normal logs to catch unseen anomalies without labeled failures; tracked <b>embedding drift</b> for unstructured logs.</li>
+            <li>Automated per-team model training with <b>Azure ML Pipelines</b> (30% less developer effort); <b>Logic Apps</b> files findings as tickets.</li>
+            <li>75% faster detection of critical incidents. Published in the Microsoft Journal of Applied Research:<a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></li>
           </ul>
           <p class="tags"><span>C#</span><span>Python</span><span>React</span><span>Azure ML</span><span>Logic Apps</span><span>KQL</span></p>
         </div>
