@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=18">
+  <link rel="stylesheet" href="styles.css?v=19">
   <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body>
@@ -86,10 +86,13 @@
           <p class="kicker">Microsoft · 2023–2026 · Production</p>
           <h3>Log Intelligence</h3>
           <p>An internal Microsoft service that spots unusual patterns in service logs before they cause an outage. I owned it from design to production.</p>
-          <div class="pcr">
-            <div><h4>Problem</h4><p>Early signs of failure hide in huge volumes of logs, so outages were often caught too late.</p></div>
-            <div><h4>Result</h4><p>75% faster outage detection across 70+ teams, one-day onboarding, 30% less developer effort. Published in the Microsoft Journal of Applied Research: <a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></p></div>
-          </div>
+          <ul class="points">
+            <li>Built self-serve onboarding and automatic log collection in <b>C#</b>, so teams onboard in one day.</li>
+            <li>Standardized logs from many services with <b>Python</b> on <b>Azure</b>, queried with <b>KQL</b>.</li>
+            <li>Automated per-team model training and deployment with <b>Azure ML Pipelines</b>.</li>
+            <li>Filed anomalies as tickets via <b>Logic Apps</b>: 75% faster outage detection across 70+ teams, 30% less developer effort.</li>
+            <li>Published in the Microsoft Journal of Applied Research: <a class="paper" href="https://drive.google.com/file/d/1Xjt7t_ROYnAsvgTri2Jnai4uVHuBaBGj/view?usp=sharing" target="_blank" rel="noopener">“LLM/SLM Embedding Drift-Based Anomaly Detection for Incident Response” ↗</a></li>
+          </ul>
           <p class="tags"><span>C#</span><span>Python</span><span>React</span><span>Azure ML</span><span>Logic Apps</span><span>KQL</span></p>
         </div>
         <figure class="flow" aria-label="Log Intelligence architecture, all four stages built by me">
@@ -109,44 +112,44 @@
           <p class="kicker">CS 6220 · Georgia Tech <span class="badge">in progress</span></p>
           <h3>FocalGuard</h3>
           <p class="summary">Detects when an AI chatbot is confidently wrong, at low cost.</p>
-          <dl class="pai">
-            <dt>Problem</dt><dd>Asking one model twice doesn't catch its repeated mistakes; asking many is expensive.</dd>
-            <dt>Approach</dt><dd>A few models with non-overlapping mistakes, called only when the first answer looks shaky.</dd>
-            <dt>Impact</dt><dd>~1.8M answers from 6 models on Ray + vLLM (planned).</dd>
-          </dl>
-          <p class="tags"><span>Python</span><span>Ray</span><span>vLLM</span><span>PyTorch</span></p>
+          <ul class="points">
+            <li>Ran 6 open LLMs (8B–20B) on <b>vLLM</b> + <b>Ray</b> across Georgia Tech GPUs via <b>Slurm</b>.</li>
+            <li>Grouped answers by meaning with <b>DeBERTa NLI</b> (<b>Transformers</b>); fused trust signals with <b>scikit-learn</b>.</li>
+            <li>Matched the full 6-model ensemble (AUROC 0.827 vs 0.820) at 52% lower cost.</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>vLLM</span><span>Ray</span><span>Transformers</span><span>Slurm</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">Graduate Research Assistant · Georgia Tech</p>
           <h3>AI Tutor Insights</h3>
           <p class="summary">Turns students’ chats with our team’s AI tutor into insights professors can act on.</p>
-          <dl class="pai">
-            <dt>Problem</dt><dd>Chats reveal where students get stuck, but no professor has time to read them all.</dd>
-            <dt>Approach</dt><dd>A 7-step LLM pipeline that grades, summarizes and clusters common mistakes.</dd>
-            <dt>Impact</dt><dd>A report per homework showing top struggles, so professors know what to re-teach.</dd>
-          </dl>
-          <p class="tags"><span>Python</span><span>OpenAI API</span><span>Web</span></p>
+          <ul class="points">
+            <li>Built a 7-step pipeline in <b>Python</b> + <b>pandas</b> that grades and summarizes chats with the <b>OpenAI API</b>.</li>
+            <li>LLMs only label; plain code computes every number, so reports stay auditable.</li>
+            <li>Serves a per-homework report of top struggles and common mistakes with <b>FastAPI</b>.</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>OpenAI API</span><span>pandas</span><span>FastAPI</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">CSE 6242 · Georgia Tech</p>
           <h3>CareerAtlas</h3>
           <p class="summary">Compares cities and roles by what a salary is really worth after prices and taxes.</p>
-          <dl class="pai">
-            <dt>Problem</dt><dd>Raw salaries hide cost of living, and most tools show nothing when no option fits.</dd>
-            <dt>Approach</dt><dd>An 8-stage pipeline over 1.4 GB of H-1B wage data, plus a search that suggests what to relax.</dd>
-            <dt>Impact</dt><dd>~135× faster search than brute force, running fully in the browser.</dd>
-          </dl>
-          <p class="tags"><span>Python</span><span>Parquet</span><span>JavaScript</span><span>D3</span></p>
+          <ul class="points">
+            <li>Cleaned and joined 1.4 GB of H-1B, price and metro data with <b>pandas</b>, <b>DuckDB</b> and <b>Parquet</b>.</li>
+            <li>Matched employers across filings with <b>RapidFuzz</b> fuzzy matching.</li>
+            <li>Built a ~135× faster search index, ported to <b>JavaScript</b> with <b>D3</b> maps, checked against Python with <b>pytest</b>.</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>DuckDB</span><span>Parquet</span><span>JavaScript</span><span>D3</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">Research · IIT Guwahati</p>
           <h3>Fidelity Extraction of Neural Networks</h3>
           <p class="summary">Copies a deployed neural network exactly, just by querying it.</p>
-          <dl class="pai">
-            <dt>Problem</dt><dd>Model weights are kept private; only inputs and outputs are exposed.</dd>
-            <dt>Approach</dt><dd>Recover the network layer by layer with an SMT solver, with no training data.</dd>
-            <dt>Impact</dt><dd>Exact extraction of medium-sized neural networks.</dd>
-          </dl>
+          <ul class="points">
+            <li>Recovered a hidden network layer by layer from queries alone, with no training data.</li>
+            <li>Encoded each layer as constraints solved with <b>Z3</b> (<b>SMT</b>) in <b>Python</b>.</li>
+            <li>Extracted medium-sized neural networks exactly.</li>
+          </ul>
           <p class="tags"><span>Python</span><span>Z3 / SMT</span><span>ML security</span></p>
         </article>
       </div>
