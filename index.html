@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="styles.css?v=22">
   <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body>
@@ -42,7 +42,7 @@
         <p class="pill"><span class="dot"></span>Open to SDE opportunities · starting May 2027</p>
         <h1>Saaketh Gunti</h1>
         <p class="role">Software Engineer · ex-Microsoft · MS CS @ Georgia Tech</p>
-        <p class="lede">I spent three years at Microsoft building Log Intelligence end to end, a service that catches outages early for 70+ internal teams. Now I'm doing an MS at Georgia Tech, working on distributed LLM systems. I like hard problems, and I use AI coding agents daily while owning the design and every change that ships.</p>
+        <p class="lede">I spent three years at Microsoft building Log Intelligence end to end, a service that catches outages early for 70+ internal teams. Now I'm doing an MS at Georgia Tech, working on distributed LLM systems. I like hard problems that take real digging to solve. I have experience using AI coding agents, while I own the design and review every change that ships.</p>
         <div class="cta">
           <a class="btn primary" href="#work">See my work</a>
           <a class="btn" href="#contact">Get in touch</a>
@@ -66,9 +66,9 @@
     <section id="toolbox" class="wrap skills-strip" aria-label="Skills">
       <div class="tool-grid">
         <div class="panel"><h4>Languages</h4><p class="tags"><span>C++</span><span>C#</span><span>Python</span><span>C</span><span>Scala</span><span>JavaScript</span><span>SQL</span><span>KQL</span></p></div>
-        <div class="panel"><h4>Backend &amp; cloud</h4><p class="tags"><span>Azure</span><span>Azure ML</span><span>Logic Apps</span><span>Synapse</span><span>Docker</span><span>Node.js</span><span>Django</span><span>MySQL</span></p></div>
-        <div class="panel"><h4>Data &amp; ML</h4><p class="tags"><span>Spark</span><span>Databricks</span><span>Ray</span><span>vLLM</span><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span></p></div>
-        <div class="panel"><h4>AI &amp; LLMs</h4><p class="tags"><span>Claude Code</span><span>AI coding agents</span><span>OpenAI API</span><span>LLM pipelines</span><span>Prompt design</span><span>vLLM</span></p></div>
+        <div class="panel"><h4>Backend &amp; cloud</h4><p class="tags"><span>Azure</span><span>Azure ML</span><span>Logic Apps</span><span>Synapse</span><span>Docker</span><span>CI/CD</span><span>FastAPI</span><span>Node.js</span><span>Django</span><span>MySQL</span></p></div>
+        <div class="panel"><h4>Data &amp; ML</h4><p class="tags"><span>Spark</span><span>Databricks</span><span>Ray</span><span>pandas</span><span>DuckDB</span><span>PyTorch</span><span>TensorFlow</span><span>scikit-learn</span><span>Transformers</span></p></div>
+        <div class="panel"><h4>AI &amp; LLMs</h4><p class="tags"><span>Claude Code</span><span>AI coding agents</span><span>Prompt engineering</span><span>LLM-as-judge</span><span>Structured outputs</span><span>LLM pipelines</span><span>vLLM</span></p></div>
         <div class="panel"><h4>Everyday</h4><p class="tags"><span>Git</span><span>Linux</span><span>Bash</span><span>PowerShell</span><span>React</span><span>D3</span></p></div>
       </div>
     </section>
@@ -109,57 +109,61 @@
 
       <div class="cards">
         <article class="panel card">
-          <p class="kicker">CS 6220 · Georgia Tech <span class="badge">in progress</span></p>
-          <h3>FocalGuard</h3>
-          <p class="summary">Detects when an AI chatbot is confidently wrong, at low cost.</p>
-          <ul class="points">
-            <li>Ran 6 open LLMs (8B–20B) on <b>vLLM</b> + <b>Ray</b> across Georgia Tech GPUs via <b>Slurm</b>.</li>
-            <li>Grouped answers by meaning with <b>DeBERTa NLI</b> (<b>Transformers</b>); fused trust signals with <b>scikit-learn</b>.</li>
-            <li>Matched the full 6-model ensemble (AUROC 0.827 vs 0.820) at 52% lower cost.</li>
-          </ul>
-          <p class="tags"><span>Python</span><span>vLLM</span><span>Ray</span><span>Transformers</span><span>Slurm</span></p>
-        </article>
-        <article class="panel card">
           <p class="kicker">Graduate Research Assistant · Georgia Tech</p>
           <h3>AI Tutor Insights</h3>
           <p class="summary">Turns students’ chats with our team’s AI tutor into insights professors can act on.</p>
           <ul class="points">
-            <li>Built a 7-step pipeline in <b>Python</b> + <b>pandas</b> that grades and summarizes chats with the <b>OpenAI API</b>.</li>
-            <li>LLMs only label; plain code computes every number, so reports stay auditable.</li>
-            <li>Serves a per-homework report of top struggles and common mistakes with <b>FastAPI</b>.</li>
+            <li>Grades each answer with an <b>LLM-as-judge</b>, then uses <b>prompt engineering</b> to pull out what each student got wrong as <b>structured JSON</b>, tagged by course concept.</li>
+            <li>Groups those individual errors into the class’s most common mistakes, then counts them in plain <b>Python</b> + <b>pandas</b> so every number is exact.</li>
+            <li>Checks the data for consistency at each step, and runs calls in parallel with retry, resume and a cost preview.</li>
+            <li>Serves a report per homework with the top three struggles, built with <b>FastAPI</b>.</li>
           </ul>
-          <p class="tags"><span>Python</span><span>OpenAI API</span><span>pandas</span><span>FastAPI</span></p>
+          <p class="tags"><span>Python</span><span>Prompt engineering</span><span>Structured outputs</span><span>LLM-as-judge</span><span>pandas</span><span>FastAPI</span></p>
+        </article>
+        <article class="panel card">
+          <p class="kicker">CS 6220 · Georgia Tech <span class="badge">in progress</span></p>
+          <h3>FocalGuard</h3>
+          <p class="summary">Detects AI chatbot hallucinations, at low cost.</p>
+          <ul class="points">
+            <li>Picks a small <b>LLM ensemble</b> by <b>focal diversity</b>: models that fail on different questions, so their agreement means something.</li>
+            <li>Groups answers by meaning with <b>NLI</b> (DeBERTa), and labels correctness with an <b>LLM-as-judge</b> that agreed with a hand audit (κ = 0.97).</li>
+            <li>Runs 6 open LLMs with <b>distributed inference</b> on <b>vLLM</b> + <b>Ray</b> across Georgia Tech GPUs.</li>
+            <li>Matches the full 6-model ensemble (AUROC 0.827 vs 0.820) at 52% lower cost.</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>Ensemble learning</span><span>NLI</span><span>LLM-as-judge</span><span>vLLM</span><span>Ray</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">CSE 6242 · Georgia Tech</p>
           <h3>CareerAtlas</h3>
           <p class="summary">Compares cities and roles by what a salary is really worth after prices and taxes.</p>
           <ul class="points">
-            <li>Cleaned and joined 1.4 GB of H-1B, price and metro data with <b>pandas</b>, <b>DuckDB</b> and <b>Parquet</b>.</li>
-            <li>Matched employers across filings with <b>RapidFuzz</b> fuzzy matching.</li>
-            <li>Built a ~135× faster search index, ported to <b>JavaScript</b> with <b>D3</b> maps, checked against Python with <b>pytest</b>.</li>
+            <li>Built an <b>ETL pipeline</b> that cleans and joins 1.4 GB of H-1B wage, price and metro data with <b>pandas</b> and <b>DuckDB</b>.</li>
+            <li>Links the same employer across filings with <b>entity resolution</b> (fuzzy name matching), checked by a 300-pair hand audit.</li>
+            <li>When no option fits, <b>constraint relaxation</b> tries every way to loosen the query (lower the wage floor, add metros) and returns the <b>Pareto skyline</b>: the trade-offs nothing else beats on both.</li>
+            <li>Counts an option only if it holds in all 6 year-by-wage scenarios; a <b>breakpoint index</b> (sorted lists per metro, <b>heap merge</b>) answers ~135× faster than brute force.</li>
+            <li>Runs fully in the browser with <b>D3</b> maps; <b>tests</b> confirm the JavaScript and Python versions agree.</li>
           </ul>
-          <p class="tags"><span>Python</span><span>DuckDB</span><span>Parquet</span><span>JavaScript</span><span>D3</span></p>
+          <p class="tags"><span>Python</span><span>Constraint relaxation</span><span>ETL</span><span>Entity resolution</span><span>DuckDB</span><span>JavaScript</span><span>D3</span></p>
         </article>
         <article class="panel card">
           <p class="kicker">Research · IIT Guwahati</p>
           <h3>Fidelity Extraction of Neural Networks</h3>
           <p class="summary">Copies a deployed neural network exactly, just by querying it.</p>
           <ul class="points">
-            <li>Recovered a hidden network layer by layer from queries alone, with no training data.</li>
-            <li>Encoded each layer as constraints solved with <b>Z3</b> (<b>SMT</b>) in <b>Python</b>.</li>
+            <li>Applied <b>model extraction</b>, an ML-security attack, to copy a hidden network from its inputs and outputs alone.</li>
+            <li>Recovered it layer by layer by encoding each layer as constraints for an <b>SMT solver</b> (<b>Z3</b>), with no training data.</li>
             <li>Extracted medium-sized neural networks exactly.</li>
           </ul>
-          <p class="tags"><span>Python</span><span>Z3 / SMT</span><span>ML security</span></p>
+          <p class="tags"><span>Python</span><span>Model extraction</span><span>SMT solving</span><span>Z3</span><span>ML security</span></p>
         </article>
       </div>
 
       <div class="panel also">
-        <h3>Systems I built from scratch</h3>
+        <h3>Systems I built</h3>
         <ul>
           <li><b>xv6 kernel</b><span>Scheduling policies, lazy allocation, LRU paging</span><em>C</em></li>
           <li><b>Assembler + loader</b><span>Two-pass assembler and linking loader for SIC/XE</span><em>C++</em></li>
-          <li><b>BusTub</b><span>CMU relational database engine coursework</span><em>C++</em></li>
+          <li><b>Geneva Motion</b><span>Moves Microsoft Geneva logs and metrics resources to sovereign clouds, 90% less manual effort</span><em>CI/CD</em></li>
           <li><b>TCP benchmarks</b><span>Veno, Vegas, Westwood and iSLIP switching in ns-3</span><em>C++</em></li>
           <li><b><a href="https://github.com/sgunti137/ContestBot" target="_blank" rel="noopener">ContestBot ↗</a></b><span>Fetches contest tests and checks solutions</span><em>Python</em></li>
           <li><b><a href="https://github.com/sgunti137/Chat-App-Messenger" target="_blank" rel="noopener">Chat app ↗</a></b><span>Real-time chat with media sharing</span><em>Node, React</em></li>
@@ -182,7 +186,7 @@
         <li class="panel">
           <span class="when">2023 – 2026</span>
           <div><h3>Software Engineer</h3><p class="org">Microsoft</p></div>
-          <p>Led Log Intelligence end to end, from design to production support.</p>
+          <p>Led Log Intelligence end to end, from design to production support. Built Geneva Motion, which moves Geneva logs and metrics resources to sovereign clouds through CI/CD pipelines, cutting manual effort by 90%.</p>
         </li>
         <li class="panel">
           <span class="when">2022 – 2023</span>
@@ -230,8 +234,8 @@
           <p>I'm looking for SDE opportunities starting May 2027 and would love to chat.</p>
         </div>
         <div class="cta">
-          <a class="btn primary" href="mailto:saakethgunti7@gmail.com">saakethgunti7@gmail.com</a>
-          <a class="btn" href="tel:+14707215177">+1 470 721 5177</a>
+          <span class="copy-group"><a class="btn primary" href="mailto:saakethgunti7@gmail.com">saakethgunti7@gmail.com</a><button class="btn primary icon copy" type="button" data-copy="saakethgunti7@gmail.com" aria-label="Copy email" title="Copy email"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span>
+          <span class="copy-group"><a class="btn" href="tel:+14707215177">+1 470 721 5177</a><button class="btn icon copy" type="button" data-copy="+14707215177" aria-label="Copy phone number" title="Copy phone number"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span>
         </div>
       </div>
     </section>
@@ -241,6 +245,6 @@
     <span>© 2026 Saaketh Gunti</span>
     <span>Built by hand · HTML, CSS, a little JS</span>
   </footer>
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

@@ -82,6 +82,13 @@ section { padding: 56px 0; }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
 .btn.primary:hover { filter: brightness(1.08); }
 .btn.sm { padding: 7px 14px; font-size: .88rem; }
+button.btn { font-family: inherit; cursor: pointer; }
+.copy-group { display: inline-flex; }
+.copy-group > .btn:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.copy-group > .btn.icon { border-top-left-radius: 0; border-bottom-left-radius: 0; border-left-color: transparent; padding: 11px 14px; color: var(--muted); box-shadow: inset 1px 0 0 var(--line-hi); }
+.copy-group > .btn.primary.icon { color: var(--accent-ink); box-shadow: inset 1px 0 0 rgba(0,0,0,.18); }
+.copy-group > .btn:hover { transform: none; }
+.copy-group > .btn.icon:not(.primary):hover, .copy-group > .btn.icon:not(.primary).done { color: var(--accent); }
 .icon-link { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; color: var(--muted); border: 1px solid var(--line); }
 .icon-link:hover { color: var(--text); border-color: var(--line-hi); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
